@@ -27,7 +27,9 @@ Datasets can be acquired via following links:
 
 ### 2. Setting up the datasets
 
-After you have downloaded the datasets, you can follow the settings in * [nnUNet](https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/Segmentation/nnUNet) for path configurations and preprocessing procedures. Finally, your folders should be organized as follows:
+After you have downloaded the datasets, you can follow the settings in * [nnUNet](https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/Segmentation/nnUNet) for path configurations and preprocessing procedures.
+
+Finally, your folders should be organized as follows:
 
 ```
 ./DATASET/
@@ -57,21 +59,16 @@ After you have downloaded the datasets, you can follow the settings in * [nnUNet
 ```
 
 ### 3. Pre-processing
-
+We use a NVIDIA Preprocessing
+```
+git clone https://github.com/NVIDIA/DeepLearningExamples.git
+cd DeepLearningExamples/PyTorch/Segmentation/nnUNet
+```
 After that, you can preprocess the above data using following commands:
 ```
-nnUNet_convert_decathlon_task -i ../DATASET/nnUNet_raw/nnUNet_raw_data/Task01_Liver
-nnUNet_convert_decathlon_task -i ../DATASET/nnUNet_raw/nnUNet_raw_data/Task02_Pancreas
-nnUNet_convert_decathlon_task -i ../DATASET/nnUNet_raw/nnUNet_raw_data/Task03_Synapse
-
-nnUNet_plan_and_preprocess -t 1
-nnUNet_plan_and_preprocess -t 2
-nnUNet_plan_and_preprocess -t 3
+python preprocess.py --task 08 --dim 3 --data "<path_to_dataset>" --results "<output_folder>"
 ```
-Then the pre-processed data are stored in separate folders, for example:
-```
-nnUNet_preprocessed/Task001_Liver/nnUNetData_plans_v2.1_stage0
-```
+Then the pre-processed data is stored in the output folder
 
 ---
 
